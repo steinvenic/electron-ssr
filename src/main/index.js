@@ -16,7 +16,7 @@ import logger from './logger'
 import { clearShortcuts } from './shortcut'
 import { loadConfigsFromString } from '../shared/ssr'
 import { isMac, isWin } from '../shared/env'
-
+app.commandLine.appendSwitch('disable-http-cache')
 const isSecondInstance = app.makeSingleInstance((argv, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
   const _window = getWindow()
@@ -127,7 +127,6 @@ app.on('will-quit', e => {
 
 app.on('activate', () => {
   if (getWindow() === null) {
-    app.commandLine.appendSwitch('disable-http-cache')
     createWindow()
   }
 })

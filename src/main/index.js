@@ -127,6 +127,7 @@ app.on('will-quit', e => {
 
 app.on('activate', () => {
   if (getWindow() === null) {
+    app.commandLine.appendSwitch('disable-http-cache')
     createWindow()
   }
 })
